@@ -122,19 +122,16 @@ The following pairwise figures depict the distributions of parameters, once agai
 
 How well does the clustering do?  We can take a look at confusion matricies (below) and a few figures comparing the original grouping with the model clustering.  For example, we can look at height vs heartrate for the original grouping:
 
-![hvh_t](figures/height_v_heartrate_true.png)
+<img src="figures/height_v_heartrate_true.png" align="left" height="500">
 
 and the model-generated clusters.
 
-![hvh_p](figures/height_v_heartrate_pred.png)
+<img src="figures/height_v_heartrate_pred.png" align="left" height="500">
 
 There seems to be strong agreement when comparing Docile-Male group with group 2, but there is confusion when differentiating Tall-Active and Tall-Slender (despite the difference in heart rates).  Below we show, similarly, the same comparison looking at height vs weight.
 
-![hvw_t](figures/height_v_weight_true.png)
-
-And for the predicted clustering,
-
-![hvw_p](figures/height_v_weight_pred.png)
+<img src="figures/height_v_weight_true.png" align="left" height="500">
+<img src="figures/height_v_weight_pred.png" align="left" height="500">
 
 Alternatively, we can look at a confusion matrix, if we assume labeling for the K-Means clustering.  For example in the k=2 model, if we assume that group 1 == "Docile Males", then the confusion matrix would be:
 
