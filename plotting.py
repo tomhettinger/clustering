@@ -84,10 +84,22 @@ def violin(df):
     
     
 def inertia(k_value, inertia):
-    plt.figure(figsize=[12,8])
+    plt.figure(figsize=[8,8])
     plt.plot(k_value, inertia, color='dodgerblue', marker='o')
     plt.xlim(0, 12)
     plt.ylim(0, 800)
     plt.xlabel('k')
     plt.ylabel('inertia')
+    plt.savefig(os.path.join(FIG_PATH, 'inertia.png'), dpi=100)
     
+    
+def d_inertia(k_value, inertia):
+    x = k_value[1:]
+    y = np.diff(inertia)
+    plt.figure(figsize=[8,8])
+    plt.plot(x, y, color='dodgerblue', marker='o')
+    plt.xlim(0, 12)
+    plt.ylim(-200, 0)
+    plt.xlabel('k')
+    plt.ylabel(r'$\Delta$ inertia / $\Delta$ k')
+    plt.savefig(os.path.join(FIG_PATH, 'inertia_derivative.png'), dpi=100)

@@ -8,6 +8,7 @@ Created on Thu Feb 25 15:17:18 2016
 from sklearn.cluster import KMeans
 from sklearn.preprocessing import StandardScaler
 import pandas as pd
+import numpy as np
 
 import plotting
 
@@ -37,7 +38,7 @@ def main():
     print sample.describe()
     print sample.describe(include=['O'])
    
-    # Create plots
+    # Create summary plots
     plotting.violin(sample)
     plotting.pairplot(sample)
     plotting.pairplot_kde(sample)
@@ -52,14 +53,15 @@ def main():
     for k in range(2, 11, 1):
         y_pred, km = build_cluster_model(X, k)
         models.append(('k%d_class' % k, km))
-        sample['k%d_class' % k] = y_pred
+        sample['k%d_class' % k] = y_pred        
         
-    # Analysis
+    # Inertia Analysis
     inertia = np.array([m[1].inertia_ for m in models])
     k_value = np.arange(2, 11, 1)
-    
     plotting.inertia(k_value, inertia)
+    plotting.d_inertia(k_value, inertia)
      
+    # Pair plots with new color coding
     for k in range(2, 11, 1):
         plotting.pairplot(sample, group='k%d_class' % k)
    

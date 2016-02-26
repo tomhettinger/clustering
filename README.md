@@ -109,7 +109,32 @@ Before beginning the machine learning exercise, all group memberships are hidden
 
 ## KMeans
 
+Using the `KMeans` classifier in the `sklearn.cluster` module, I processed the data set (without labels) to cluster the data into k clusters.  The number of clusters, k, varied from 2 to 10.  For each cluster count k, the KMeans algorithm ran a total of 10 times with new random starting points for cluster centroids.  The best fit (minimizing square distances from cluster centroids) of the 10 trials is ultimately adopted for the classifications given at that k.  After running k=2,3,...,10 models with 10 iterations, the algorithm yields a resulting k=2,3,...,10 sets of classification predictions.
+
+The following pairwise figures depict the distributions of parameters, once again, but with color-coding given by the class applied to each observation.  Shown below are the classifications given from the models k=2 through k=6.
+
+![pairwise_k2](figures/pairplot_k2_class.png)
+![pairwise_k3](figures/pairplot_k3_class.png)
+![pairwise_k4](figures/pairplot_k4_class.png)
+![pairwise_k5](figures/pairplot_k5_class.png)
+![pairwise_k6](figures/pairplot_k6_class.png)
 
 
+How well does the clustering do?  We can take a look at a few figures comparing the original grouping with the model clustering.
 
-## ?????
+![comparison01](figures/X.png)
+![comparison02](figures/X.png)
+![comparison03](figures/X.png)
+![comparison04](figures/X.png)
+
+In practice, the group classifications will be unknown.  This means we need a way to decide what level of clustering (how many clusters) is appropriate.  One way to accomplish this is by looking at the decrease in inertia (square of distances to cluster centroids), and finding a elbow where the increase in cluster count k no longer reduces the inertia sufficiently.  Below, I've plotted the inertia of models as a function of k, as well as the derivative of the inertia.
+
+![inertia](figures/inertia.png)
+![inertia_derivative](figures/inertia_derivative.png)
+
+For k values > 5 or 6, the decrease in inertia is not very large.
+
+
+## AgglomerativeClustering
+
+Text Text Text.
