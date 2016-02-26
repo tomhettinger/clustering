@@ -119,19 +119,15 @@ The following pairwise figures depict the distributions of parameters, once agai
 ![pairwise_k5](figures/pairplot_k5_class.png)
 ![pairwise_k6](figures/pairplot_k6_class.png)
 
+How well does the clustering do?  We can take a look at confusion matricies (below) and a few figures comparing the original grouping with the model clustering.  For example, we can look at height vs heartrate for the original grouping (stars) and the model-generated clusters (circles):
 
-How well does the clustering do?  We can take a look at confusion matricies (below) and a few figures comparing the original grouping with the model clustering.  For example, we can look at height vs heartrate for the original grouping:
-
-<img src="figures/height_v_heartrate_true.png" align="left" height="500">
-
-and the model-generated clusters.
-
-<img src="figures/height_v_heartrate_pred.png" align="left" height="500">
+<img src="figures/height_v_heartrate_true.png" height="500">
+<img src="figures/height_v_heartrate_pred.png" height="500">
 
 There seems to be strong agreement when comparing Docile-Male group with group 2, but there is confusion when differentiating Tall-Active and Tall-Slender (despite the difference in heart rates).  Below we show, similarly, the same comparison looking at height vs weight.
 
-<img src="figures/height_v_weight_true.png" align="left" height="500">
-<img src="figures/height_v_weight_pred.png" align="left" height="500">
+<img src="figures/height_v_weight_true.png" height="500">
+<img src="figures/height_v_weight_pred.png" height="500">
 
 Alternatively, we can look at a confusion matrix, if we assume labeling for the K-Means clustering.  For example in the k=2 model, if we assume that group 1 == "Docile Males", then the confusion matrix would be:
 
