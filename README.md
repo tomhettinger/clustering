@@ -122,10 +122,36 @@ The following pairwise figures depict the distributions of parameters, once agai
 
 How well does the clustering do?  We can take a look at a few figures comparing the original grouping with the model clustering.
 
-![comparison01](figures/X.png)
-![comparison02](figures/X.png)
-![comparison03](figures/X.png)
-![comparison04](figures/X.png)
+![hvh_t](figures/height_v_heartrate_true.png)
+![hvh_p](figures/height_v_heartrate_pred.png)
+![hvw_t](figures/height_v_weight_true.png)
+![hvw_p](figures/height_v_weight_pred.png)
+
+We can also look at a confusion matrix, if we assume labeling for the K-Means clustering.  For example in the k=2 model, if we assume that group 1 == "Docile Males", then the confusion matrix would be:
+
+|             | Docile-Male | other |
+|-------------|-------------|-------|
+| Docile-Male | 35          |   1   |
+| Other       | 0           |  164  |
+
+The k=2 model does a great job at separating the Docile-Male group from the others (this is the only all-male group). Likewise, for the k=3 model:
+
+| Tall-Active or Tall-Slender | Docile-Male | Heavy-Active-Female or Short-Active |
+|-----------------------------|-------------|-------------------------------------|
+|             104             |      0      |               0                     |
+|              0              |     35      |               0                     |
+|              1              |      0      |              60                     |
+
+Here, the k=3 model separates out the Docile-Male group, and splits the remaining individuals into two clusters, each containing almost exclusively different groups. For k=5, three of the five groups are clustered into mostly homogeneous clusters, but two groups (Tall-Active and Tall-Slender) are not separated, despite their differences in heart rate.
+
+| Tall-Slender | Tall-Active | Docile-Male | Short-Active | Heavy-Active-Female |
+|--------------|-------------|-------------|--------------|---------------------|
+|     20       |    33       |    0        |    0         |         0           |    
+|     15       |    37       |    0        |    0         |         0           |    
+|      0       |    0        |    35       |    0         |         0           |    
+|      0       |    0        |    0        |   30         |         0           |    
+|      0       |    0        |    0        |   20         |        10           |    
+
 
 In practice, the group classifications will be unknown.  This means we need a way to decide what level of clustering (how many clusters) is appropriate.  One way to accomplish this is by looking at the decrease in inertia (square of distances to cluster centroids), and finding a elbow where the increase in cluster count k no longer reduces the inertia sufficiently.  Below, I've plotted the inertia of models as a function of k, as well as the derivative of the inertia.
 
@@ -133,6 +159,7 @@ In practice, the group classifications will be unknown.  This means we need a wa
 ![inertia_derivative](figures/inertia_derivative.png)
 
 For k values > 5 or 6, the decrease in inertia is not very large.
+
 
 
 ## AgglomerativeClustering

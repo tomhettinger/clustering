@@ -103,3 +103,17 @@ def d_inertia(k_value, inertia):
     plt.xlabel('k')
     plt.ylabel(r'$\Delta$ inertia / $\Delta$ k')
     plt.savefig(os.path.join(FIG_PATH, 'inertia_derivative.png'), dpi=100)
+    
+    
+def compare_model(df, x, y, model='k5_class'):
+    g = sns.FacetGrid(data=df, hue='group', size=8)
+    g = g.map(plt.scatter, x, y, s=100, marker='*')
+    plt.legend(loc=4, markerscale=2, shadow=True, frameon=True, fontsize=12)
+    plt.tight_layout()
+    plt.savefig(os.path.join(FIG_PATH, '%s_v_%s_true.png' % (y, x)), dpi=100)
+
+    g = sns.FacetGrid(data=df, hue=model, size=8, hue_order=[3, 1, 2, 0, 4])
+    g = g.map(plt.scatter, x, y, s=100)
+    plt.legend(loc=4, markerscale=1.5, shadow=True, frameon=True, fontsize=14)
+    plt.tight_layout()
+    plt.savefig(os.path.join(FIG_PATH, '%s_v_%s_pred.png' % (y, x)), dpi=100)
