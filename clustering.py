@@ -41,7 +41,7 @@ def k2_confusion_matrix(df):
     temp.ix[temp.k2_class == 1, 'k2_class'] = 'Docile-Male'
     labs = ['Docile-Male', 'other']
     print labs
-    print confusion_matrix(temp.k2_class.tolist(), temp.group.tolist(), labels=labs)
+    print confusion_matrix(temp.group.tolist(), temp.k2_class.tolist(), labels=labs)
 
 
 def k3_confusion_matrix(df):
@@ -58,7 +58,7 @@ def k3_confusion_matrix(df):
     temp.ix[temp.k3_class == 2, 'k3_class'] = 'Heavy-Active-Female or Short-Active'
     labs = ['Tall-Active or Tall-Slender', 'Docile-Male', 'Heavy-Active-Female or Short-Active']
     print labs
-    print confusion_matrix(temp.k3_class.tolist(), temp.group.tolist(), labels=labs)
+    print confusion_matrix(temp.group.tolist(), temp.k3_class.tolist(), labels=labs)
 
 
 def k5_confusion_matrix(df):
@@ -72,7 +72,7 @@ def k5_confusion_matrix(df):
     temp.ix[temp.k5_class == 4, 'k5_class'] = 'Heavy-Active-Female'
     labs = ['Tall-Slender', 'Tall-Active', 'Docile-Male', 'Short-Active', 'Heavy-Active-Female']
     print labs
-    print confusion_matrix(temp.k5_class.tolist(), temp.group.tolist(), labels=labs)
+    print confusion_matrix(temp.group.tolist(), temp.k5_class.tolist(), labels=labs)
 
 
 def main():
