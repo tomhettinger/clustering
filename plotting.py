@@ -60,7 +60,7 @@ def pairplot_kde(df):
     plt.savefig(os.path.join(FIG_PATH, 'pairplot_kde.png'), dpi=100)
     
     
-def violin_subplot(ax, p, ylab):
+def violin_subplot(ax, df, p, ylab):
     sns.violinplot(x='group', y=p, hue='gender', axis=1, data=df, 
                    split=True, inner="quart", ax=ax)
     plt.xticks(rotation=10)
@@ -72,13 +72,13 @@ def violin_subplot(ax, p, ylab):
 def violin(df):
     fig = plt.figure(figsize=[18,14])
     ax = plt.subplot(221)
-    violin_subplot(ax, 'weight', 'weight (kg)')
+    violin_subplot(ax, df, 'weight', 'weight (kg)')
     ax = plt.subplot(222)
-    violin_subplot(ax, 'height', 'height (cm)')
+    violin_subplot(ax, df, 'height', 'height (cm)')
     ax = plt.subplot(223)
-    violin_subplot(ax, 'age', 'age (years)')
+    violin_subplot(ax, df, 'age', 'age (years)')
     ax = plt.subplot(224)
-    violin_subplot(ax, 'weight', 'heart rate (bpm)')
+    violin_subplot(ax, df, 'heartrate', 'heart rate (bpm)')
     fig.tight_layout()
     plt.savefig(os.path.join(FIG_PATH, 'violin.png'), dpi=100)
     
