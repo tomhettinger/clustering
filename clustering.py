@@ -120,6 +120,7 @@ def main():
     plotting.compare_model(df=sample, model='k5_class', x='heartrate', y='height')
     plotting.compare_model(df=sample, model='k5_class', x='weight', y='height')
 
+
 if __name__ == "__main__":
     main()
     
